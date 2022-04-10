@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminPanel\HomeController as AdminPanelController;
+use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +15,38 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 | Test Comment
 */
+// 1- Do something in route
+Route::get('/hello', function () {
+    return "Hello world";
+});
 
+// 2- Call view in route
 Route::get('/', function () {
     return view('welcome');
 });
+// 3- Call controller function
+Route::get('/',[HomeController::class,'index'])->name('home');
+
+// 4- Route -> Controller -> View
+Route::get('/test',[HomeController::class,'test'])->name('test');
+
+// 5-1 Route with parametr
+Route::get('/param1/{id}',[HomeController::class,'param1'])->name('param1');
+// 5-2 Route with parametrs
+Route::get('/param2/{id1}/{id2}',[HomeController::class,'param2'])->name('param2');
+
+// 4- Route -> Controller -> View
+Route::post('/save',[HomeController::class,'save'])->name('save');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//************** Admin Panel Routes ***************//
+Route::get('/admin',[AdminPanelController::class,'index'])->name('admin');
+
+//************** Admin Category Routes ***************//
+Route::get('/admin/category',[AdminCategoryController::class,'index'])->name('admin_category');
+Route::get('/admin/category/create',[AdminCategoryController::class,'create'])->name('admin_category_create');
+Route::post('/admin/category/store',[AdminCategoryController::class,'store'])->name('admin_category_store');
+Route::get('/admin/category/edit/{id}',[AdminCategoryController::class,'edit'])->name('admin_category_edit');
