@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\ImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminPanelController;
-use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
+use App\Http\Controllers\AdminPanel\CategoryController;
+use App\Http\Controllers\AdminPanel\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +45,42 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //************** Admin Panel Routes ***************//
-Route::get('/admin',[AdminPanelController::class,'index'])->name('admin');
 
-//************** Admin Category Routes ***************//
-Route::get('/admin/category',[AdminCategoryController::class,'index'])->name('admin_category');
-Route::get('/admin/category/create',[AdminCategoryController::class,'create'])->name('admin_category_create');
-Route::post('/admin/category/store',[AdminCategoryController::class,'store'])->name('admin_category_store');
-Route::get('/admin/category/edit/{id}',[AdminCategoryController::class,'edit'])->name('admin_category_edit');
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('',[AdminPanelController::class,'index'])->name('index');
+
+    //************** Admin Category Routes ***************//
+    Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {
+
+        Route::get('/','index')->name('');
+        Route::get('/create','create')->name('create');
+        Route::post('/store','store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+    });
+
+    //************** Admin Service Routes ***************//
+    Route::prefix('/service')->name('service.')->controller(ServiceController::class)->group(function () {
+
+        Route::get('/','index')->name('index');
+        Route::get('/create','create')->name('create');
+        Route::post('/store','store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+    });
+    //************** Admin Service Image Gallery Routes ***************//
+    Route::prefix('/image')->name('image.')->controller(ImageController::class)->group(function () {
+
+        Route::get('/{pid}','index')->name('index');
+        Route::get('/create/{pid}','create')->name('create');
+        Route::post('/store/{pid}','store')->name('store');
+        Route::get('/show/{pid}/{id}','show')->name('show');
+        Route::get('/destroy/{pid}/{id}','destroy')->name('destroy');
+    });
+});
+

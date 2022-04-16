@@ -6,14 +6,14 @@
 @section('content')
     <div class="content-wrapper">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0 pb-4">
-            <h3 class="font-weight-bold">Create Category</h3>
+            <h3 class="font-weight-bold">Create Service</h3>
         </div>
-        <form role="form" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
+        <form role="form" action="{{route('admin.service.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Parent Category</label>
+                <label class="col-sm-2 col-form-label">Parent Service</label>
                 <div class="col-sm-5">
-                    <select class="form-control select2" name="parent_id" id="">
+                    <select class="form-control select" name="category_id">
                         <option value="0" selected="selected">Main catagory</option>
                         @foreach($data as $rs)
                             <option value="{{$rs->id}}">
@@ -48,10 +48,21 @@
                 </div>
             </div>
             <div class="row mb-3">
+                <label for="price" class="col-sm-2 col-form-label">Price</label>
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" name="price" value="0">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="duration" class="col-sm-2 col-form-label">Duration (minuts)</label>
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" name="duration" value="0">
+                </div>
+            </div>
+            <div class="row mb-3">
                 <label for="status" class="col-sm-2 col-form-label">Status</label>
                 <div class="col-sm-5">
                     <select class="form-select" name="status" aria-label="Default select example">
-                    <option></option>
                     <option value="True" selected>True</option>
                     <option value="False">False</option>
                     </select>

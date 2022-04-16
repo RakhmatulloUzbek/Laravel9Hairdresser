@@ -11,7 +11,17 @@
                     <ul class="nav">
                         <li><a href="home/index/#home-section">HOME</a></li>
                         <li><a href="index.html#about">ABOUT</a></li>
-                        <li><a href="index.html#services">SERVICES</a></li>
+                        <li class="nav-item dropdown"><a href="index.html#services" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                SERVICES
+                            </a>
+                            <div class="dropdown-menu" style="color: white; background-color: #212529">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                        </li>
                         <li><a href="index.html#gallery">GALLERY</a></li>
                         <li><a href="index.html#pricing">PRICING</a></li>
                         <li><a href="index.html#contact-us">CONTACT</a></li>
