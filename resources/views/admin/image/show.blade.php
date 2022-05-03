@@ -1,11 +1,6 @@
 @extends('layouts.adminbase')
 
 @section('title','Category List')
-<style>
-    .img1:hover {
-        transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    }
-</style>
 
 
 @section('content')
@@ -13,11 +8,11 @@
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Detail Category of {{$data->title}}</h3>
         </div>
-        <div class="row nb-2  ml-2 mt-4 responsive">
-            <div class="col-sm-2 m-2">
+        <div class="row nb-2  ml-2 mt-4">
+            <div class="col-sm-2">
                 <a href="{{route('admin.category.edit',['id'=>$data->id])}}" style="width: 150px" class="btn btn-block btn-success" data-toggle="tooltip" title="Edit">Edit</a>
             </div>
-            <div class="col-sm-2 m-2">
+            <div class="col-sm-2">
                 <a href="{{route('admin.category.destroy',['id'=>$data->id])}}" style="width: 150px" onclick="return confirm('Deleting !! Are you sure ?')" class="btn btn-block btn-danger" data-toggle="tooltip" title="Delete">Delete</a>
             </div>
         </div>
@@ -27,8 +22,8 @@
                     <aside class="col-lg-4">
                         <div class="gallery-wrap">
                             <div class="img-big-wrap img-thumbnail d-block my-auto">
-                                <a href="{{Storage::url($data->image)}}" data-type="image" data-fslightbox="mygallery" target="_blank">
-                                    <img class="img1 img-thumbnail d-block" src="{{Storage::url($data->image)}}" alt="">
+                                <a href="{{Storage::url($data->image)}}" data-type="image" data-fslightbox="mygallery">
+                                    <img class="img-thumbnail d-block" src="{{Storage::url($data->image)}}" alt="">
                                 </a>
                             </div>
                         </div>

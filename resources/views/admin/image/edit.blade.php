@@ -6,23 +6,24 @@
 @section('content')
     <div class="content-wrapper">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0 pb-4">
-            <h3 class="font-weight-bold">Edit Service : {{$data->title}}</h3>
+            <h3 class="font-weight-bold">Edit Category : {{$data->title}}</h3>
         </div>
-        <form role="form" action="{{route('admin.service.update',['id'=>$data->id])}}" method="post">
+        <form role="form" action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Parent Service</label>
-                <div class="col-sm-5">
-                    <select class="form-control" name="category_id">
-                        <option value="0" selected="selected">Main catagory</option>
-                        @foreach($datalist as $rs)
-                            <option value="{{$rs->id}}" @if($rs->id == $data->category_id) selected="selected" @endif>
-                                {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+           <div class="card-body">
+               <div class="row mb-3">
+                   <label class="col-sm-2 col-form-label">Parent</label>
+                   <div class="col-sm-5">
+                       <select class="form-control" name="parent_id">
+                           <option value="0" selected="selected">Main catagory</option>
+                           @foreach($datalist as $rs)
+                               <option value="{{$rs->id}}" @if($rs->id == $data->parent_id) selected="selected" @endif>
+                                   {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
+                               </option>
+                           @endforeach
+                       </select>
+                   </div>
+               </div>
             <div class="row mb-3">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-5">
@@ -42,28 +43,10 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="price" class="col-sm-2 col-form-label">Price</label>
-                <div class="col-sm-5">
-                    <input type="number" class="form-control" name="price" value="{{$data->price}}">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="duration" class="col-sm-2 col-form-label">Duration</label>
-                <div class="col-sm-5">
-                    <input type="number" class="form-control" name="duration" value="{{$data->duration}}">
-                </div>
-            </div>
-            <div class="row mb-3">
                 <label for="image" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-5">
                     <input type="file" class="form-control" name="image">
-                    @if($rs->image)
-                        <a href="{{Storage::url($rs->image)}}" data-type="image" data-fslightbox="mygallery">
-                            <img class="img-thumbnail d-block" src="{{Storage::url($rs->image)}}" alt="">
-                        </a>
-                    @endif
                 </div>
-
             </div>
             <div class="row mb-3">
                 <label for="status" class="col-sm-2 col-form-label">Status</label>
@@ -76,6 +59,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
+           </div>
         </form>
     </div>
     <!-- partial -->

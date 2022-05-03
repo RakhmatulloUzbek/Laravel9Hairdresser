@@ -1,7 +1,13 @@
 @extends('layouts.adminbase')
 
 @section('title','Category List')
-
+@section('style')
+    <style>
+        .img1:hover {
+            transform: scale(2.0); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
+@endsection
 
 @section('content')
     <div class="content-wrapper">
@@ -16,13 +22,13 @@
             <!-- /.card-header -->
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>id</th>
+                    <thead class="m-2">
+                    <tr class="table-primary">
+                        <th style="width: 25px;">id</th>
                         <th>Parent id</th>
-                        <th>Title</th>
-                        <th>Image</th>
-                        <th style="width: 35px">Status</th>
+                        <th style="width: 100px">Title</th>
+                        <th style="width: 70px">Image</th>
+                        <th style="width: 32px">Status</th>
                         <th style="width: 25px">Edit</th>
                         <th style="width: 25px">Delete</th>
                         <th style="width: 25px">Show</th>
@@ -36,7 +42,7 @@
                         <td>{{$rs->title}}</td>
                         <td style="width: 65px">
                             @if($rs->image)
-                                <img src="{{Storage::url($rs->image)}}" class="rounded m-0" style="width: 60px" alt="">
+                                <img src="{{Storage::url($rs->image)}}" class="img1 rounded m-0" style="width: 70px; height: 50px">
                             @endif
                         </td>
                         <td>{{$rs->status}}</td>
@@ -44,8 +50,8 @@
                         <td><a href="{{route('admin.category.destroy',['id'=>$rs->id])}}" onclick="return confirm('Deleting !! Are you sure ?')" class="btn btn-outline-danger" data-toggle="tooltip" title="Delete"><i class="bi bi-trash3-fill"></i></a></td>
                         <td><a href="{{route('admin.category.show',['id'=>$rs->id])}}" class="btn btn-outline-primary" data-toggle="tooltip" title="Show"><i class="bi bi-eye-fill"></i></a></td>
                     </tr>
-                    </tbody>
                     @endforeach
+                    </tbody>
                 </table>
             </div>
             <!-- /.card-body -->

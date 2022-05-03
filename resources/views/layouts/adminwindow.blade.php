@@ -29,13 +29,9 @@
 </head>
 <body>
 <div class="container-scroller">
-    @include('admin.navbar')
     <div class="container-fluid page-body-wrapper">
-    @include('admin.settings')
-    @include('admin.sidebar')
         <div class="main-panel">
             @yield('content')
-    @include('admin.footer')
         </div>
         <!-- main-panel ends -->
     </div>

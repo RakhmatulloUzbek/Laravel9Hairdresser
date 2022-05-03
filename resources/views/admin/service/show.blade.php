@@ -1,6 +1,11 @@
 @extends('layouts.adminbase')
 
 @section('title','Servise List')
+<style>
+    .img1:hover {
+        transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+</style>
 
 
 @section('content')
@@ -22,8 +27,8 @@
                     <aside class="col-lg-4">
                         <div class="gallery-wrap">
                             <div class="img-big-wrap img-thumbnail d-block my-auto">
-                                <a href="{{Storage::url($data->image)}}" data-type="image" data-fslightbox="mygallery">
-                                    <img class="img-thumbnail d-block" src="{{Storage::url($data->image)}}" alt="">
+                                <a href="{{Storage::url($data->image)}}" data-type="image" data-fslightbox="mygallery" target="_blank">
+                                    <img class="img1 img-thumbnail d-block" src="{{Storage::url($data->image)}}" alt="">
                                 </a>
                             </div>
                         </div>

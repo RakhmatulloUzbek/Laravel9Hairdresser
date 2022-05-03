@@ -1,6 +1,13 @@
 @extends('layouts.adminbase')
 
 @section('title','Service List')
+@section('style')
+    <style>
+        .img1:hover {
+            transform: scale(1.8); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
+@endsection
 
 @section('content')
     <div class="content-wrapper">
@@ -16,12 +23,13 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th style="width: 20px">id</th>
                         <th>Category</th>
                         <th style="width: 20px">User</th>
                         <th>Title</th>
-                        <th>Image</th>
+                        <th style="width: 80px;">Image</th>
+                        <th>Gallery</th>
                         <th>Price</th>
                         <th style="width: 25px">Duration</th>
                         <th style="width: 25px">Status</th>
@@ -32,7 +40,7 @@
                     </thead>
                     @foreach($data as $rs)
                     <tbody>
-                    <tr class="table-info">
+                    <tr>
                         <td>{{$rs->id}}</td>
                         <td>
                             {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category,$rs->category->title)}}
@@ -41,8 +49,14 @@
                         <td>{{$rs->title}}</td>
                         <td>
                             @if($rs->image)
-                                <img src="{{Storage::url($rs->image)}}" style="width: 60px">
+                                <img src="{{Storage::url($rs->image)}}" class="img1 rounded m-0" style="width: 70px; height: 60px">
                             @endif
+                        </td>
+                        <td>
+                            <a href="{{route('admin.image.index',['pid'=>$rs->id])}}" class="btn btn-outline-primary"
+                               onclick="return !window.open(this.href,'','top=50 left=100 width=1100 hegth=700')">
+                                <img src="{{asset('assets')}}/Admin/images/gallery.png" alt="" class="rounded m-0" style="width: 50px; height: 40px">
+                            </a>
                         </td>
                         <td>{{$rs->price}}</td>
                         <td>{{$rs->duration}}</td>
