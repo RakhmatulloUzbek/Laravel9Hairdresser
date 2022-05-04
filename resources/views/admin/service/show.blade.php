@@ -1,12 +1,6 @@
 @extends('layouts.adminbase')
 
 @section('title','Servise List')
-<style>
-    .img1:hover {
-        transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    }
-</style>
-
 
 @section('content')
     <div class="content-wrapper">
@@ -69,6 +63,10 @@
                             <tr>
                                 <th>Status</th>
                                 <td>{{$data->status}}</td>
+                            </tr>
+                            <tr>
+                                <th>Detail</th>
+                                <td>{{!! $data->detail !!}}</td>
                             </tr>
                             <tr>
                                 <th>Created Date</th>

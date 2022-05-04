@@ -25,7 +25,7 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('assets')}}/Admin/images/favicon.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    @yield('style')
+    @yield("head")
 </head>
 <body>
 <div class="container-scroller">
@@ -36,6 +36,9 @@
         <div class="main-panel">
             @yield('content')
     @include('admin.footer')
+
+
+
         </div>
         <!-- main-panel ends -->
     </div>
@@ -43,6 +46,7 @@
 </div>
 <!-- container-scroller -->
 
+@yield('foot')
 <!-- plugins:js -->
 <script src="{{asset('assets')}}/Admin/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->

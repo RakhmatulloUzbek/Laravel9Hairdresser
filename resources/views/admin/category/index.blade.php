@@ -1,13 +1,7 @@
 @extends('layouts.adminbase')
 
 @section('title','Category List')
-@section('style')
-    <style>
-        .img1:hover {
-            transform: scale(2.0); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-        }
-    </style>
-@endsection
+
 
 @section('content')
     <div class="content-wrapper">

@@ -2,6 +2,9 @@
 
 @section('title','Create Category')
 
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
 
 @section('content')
     <div class="content-wrapper">
@@ -38,7 +41,25 @@
             <div class="row mb-3">
                 <label for="description" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="description" placeholder="Description">
+                    <input type="textarea" class="form-control" name="description" placeholder="Description">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="detail" class="col-sm-2 col-form-label">Detail</label>
+                <div class="col-sm-5">
+                    <textarea name="detail" id="detail" class="form-control">
+
+                    </textarea>
+                    <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#detail' ) )
+                            .then( editor => {
+                                console.log( editor );
+                            } )
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>
                 </div>
             </div>
             <div class="row mb-3">
@@ -72,5 +93,13 @@
         </form>
     </div>
     <!-- partial -->
+@endsection
+@section('foot')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(function() {
+            $('.textarea').summernote()
+        })
+    </script>
 @endsection
 

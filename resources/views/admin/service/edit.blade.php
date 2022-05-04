@@ -2,6 +2,9 @@
 
 @section('title','Edit Category : '.$data->title)
 
+@section('head')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
+@endsection
 
 @section('content')
     <div class="content-wrapper">
@@ -55,15 +58,20 @@
             </div>
             <div class="row mb-3">
                 <label for="image" class="col-sm-2 col-form-label">Image</label>
-                <div class="col-sm-5">
+                <div class="col-sm-4">
                     <input type="file" class="form-control" name="image">
-                    @if($rs->image)
-                        <a href="{{Storage::url($rs->image)}}" data-type="image" data-fslightbox="mygallery">
-                            <img class="img-thumbnail d-block" src="{{Storage::url($rs->image)}}" alt="">
-                        </a>
+                    @if($data->image)
+                        <img class="img-thumbnail" src="{{Storage::url($data->image)}}" alt="">
                     @endif
                 </div>
-
+            </div>
+            <div class="row mb-3">
+                <label for="detail" class="col-sm-2 col-form-label">Detail</label>
+                <div class="col-sm-5">
+                    <textarea name="detail" id="detail" class="form-control">
+                        {{$data->detail}}
+                    </textarea>
+                </div>
             </div>
             <div class="row mb-3">
                 <label for="status" class="col-sm-2 col-form-label">Status</label>
@@ -80,4 +88,11 @@
     </div>
     <!-- partial -->
 @endsection
-
+@section('foot')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(function() {
+            $('.textarea').summernote()
+        })
+    </script>
+@endsection

@@ -2,14 +2,6 @@
 
 @section('title','Service Image Gallary')
 
-@section('style')
-    <style>
-        .img1:hover {
-            transform: scale(2.0); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="content-wrapper-2">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0 pb-4">

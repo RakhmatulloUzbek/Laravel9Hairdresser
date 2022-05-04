@@ -1,60 +1,46 @@
-<!-- HOME SECTION -->
-
-    <section class="home-section" id="home-section">
-
-		    <div id="home-section-carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#home-section-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#home-section-carousel" data-slide-to="1"></li>
-                    <li data-target="#home-section-carousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <!-- FIRST SLIDE -->
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{asset('assets')}}/Design/images/barbershop_image_1.jpg" alt="First slide">
-                        <div class="carousel-caption d-md-block">
-                            <h3>It's Not Just a Haircut, It's an Experience.</h3>
-                            <p>
-Our barbershop is the territory created purely for males who appreciate
-<br>
-                                 premium quality, time and flawless look.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- SECOND SLIDE -->
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="{{asset('assets')}}/Design/images/barbershop_image_2.jpg" alt="Second slide">
-                        <div class="carousel-caption d-md-block">
-                            <h3>It's Not Just a Haircut, It's an Experience.</h3>
-                            <p>
-Our barbershop is the territory created purely for males who appreciate
-<br>
-                                premium quality, time and flawless look.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- THIRD SLIDE -->
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="{{asset('assets')}}/Design/images/barbershop_image_3.jpg" alt="Third slide">
-                        <div class="carousel-caption d-md-block">
-                            <h3>It's Not Just a Haircut, It's an Experience.</h3>
-                            <p>
-Our barbershop is the territory created purely for males who appreciate
-<br>
-                                premium quality, time and flawless look.
-                            </p>
-                        </div>
+<section class="slider_section">
+    <ul id="main-slider" class="owl-carousel main_slider">
+        @foreach($sliderdata as $rs)
+            <li class="main_slide d-flex align-items-center" style="background-image: url('{{Storage::url($rs->image)}}'); height: 560px; width: 1600px">
+                <div class="container">
+                    <div class="slider_content">
+                        <h3>Its Not Just a Haircut, Its an Experience.</h3>
+                        <h1>Being a barber is about <br>taking care of the people.</h1>
+                        <p>Our barbershop is the territory created purely for males who appreciate<br> premium quality, time and flawless look.</p>
+                        <a href="#" class="default_btn">Make Appointment</a>
                     </div>
                 </div>
-                <!-- PREVIOUS & NEXT -->
-                <a class="carousel-control-prev" href="#home-section-carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#home-section-carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            </li>
+        @endforeach
+        <li class="main_slide d-flex align-items-center" style="background-image: url('{{asset('assets')}}/Design/img/slide-1.jpg');">
+            <div class="container">
+                <div class="slider_content">
+                    <h3>Its Not Just a Haircut, Its an Experience.</h3>
+                    <h1>Being a barber is about <br>taking care of the people.</h1>
+                    <p>Our barbershop is the territory created purely for males who appreciate<br> premium quality, time and flawless look.</p>
+                    <a href="#" class="default_btn">Make Appointment</a>
+                </div>
             </div>
-		</div>
-	</section>
+        </li>
+        <li class="main_slide d-flex align-items-center" style="background-image: url('{{asset('assets')}}/Design/img/slide-2.jpg');">
+            <div class="container">
+                <div class="slider_content">
+                    <h3>Classic Hair Style & Shaves.</h3>
+                    <h1>Our hair styles<br>enhances your smile.</h1>
+                    <p>Our barbershop is the territory created purely for males who appreciate<br> premium quality, time and flawless look.</p>
+                    <a href="#" class="default_btn">Make Appointment</a>
+                </div>
+            </div>
+        </li>
+        <li class="main_slide d-flex align-items-center" style="background-image: url('{{asset('assets')}}/Design/img/slide-3.jpg');">
+            <div class="container">
+                <div class="slider_content">
+                    <h3>Its Not Just a Haircut, Its an Experience.</h3>
+                    <h1>Where mens want  <br>to look there very best.</h1>
+                    <p>Our barbershop is the territory created purely for males who appreciate<br> premium quality, time and flawless look.</p>
+                    <a href="#" class="default_btn">Make Appointment</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section><!-- /.slider_section -->

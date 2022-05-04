@@ -2,10 +2,9 @@
 
 @section('title','Barber Shop || BarberShop Hair Salon')
 
-@section('slider')
+@section('slide')
     @include('home.slider')
 @endsection
-
 @section('content')
-    @include('home.sidebar')
+    @include('home.content')
 @endsection

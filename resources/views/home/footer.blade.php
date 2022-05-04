@@ -1,79 +1,62 @@
-<!-- WIDGET SECTION / FOOTER -->
-
-<section class="widget_section">
+<section class="widget_section padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 sm-padding">
                 <div class="footer_widget">
-                    <img src="{{asset('assets')}}/Design/images/barbershop_logo.png" alt="Brand">
-                    <p>
-                        Our barbershop is the created for men who appreciate premium quality, time and flawless look.
-                    </p>
+                    <img class="mb-15" src="{{asset('assets')}}/Design/img/logo.png" alt="Brand">
+                    <p>Our barbershop is the created for men who appreciate premium quality, time and flawless look.</p>
                     <ul class="widget_social">
-                        <li><a href="#" data-toggle="tooltip" title="Facebook"><i class="fab fa-facebook-f fa-2x"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" title="Twitter"><i class="fab fa-twitter fa-2x"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" title="Instagram"><i class="fab fa-instagram fa-2x"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" title="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" title="Google+"><i class="fab fa-google-plus-g fa-2x"></i></a></li>
+                        <li><a href="#"><i class="social_facebook"></i></a></li>
+                        <li><a href="#"><i class="social_twitter"></i></a></li>
+                        <li><a href="#"><i class="social_googleplus"></i></a></li>
+                        <li><a href="#"><i class="social_instagram"></i></a></li>
+                        <li><a href="#"><i class="social_linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 sm-padding">
                 <div class="footer_widget">
-                    <h3>Headquarters</h3>
-                    <p>
-                        962 Fifth Avenue, 3rd Floor New York, NY10022
-                    </p>
-                    <p>
-                        contact@barbershop.com
-                        <br>
-                        (+123) 456 789 101
-                    </p>
+                    <h3>Headquaters</h3>
+                    <p>962 Fifth Avenue, 3rd Floor New York, NY10022</p>
+                    <p>Hello@dynamiclayers.net <br>(+123) 456 789 101</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 sm-padding">
                 <div class="footer_widget">
-                    <h3>
-                        Opening Hours
-                    </h3>
+                    <h3>Opening Hours</h3>
                     <ul class="opening_time">
                         <li>Monday - Friday 11:30am - 2:008pm</li>
-                        <li>Monday - Friday 11:30am - 2:008pm</li>
-                        <li>Monday - Friday 11:30am - 2:008pm</li>
-                        <li>Monday - Friday 11:30am - 2:008pm</li>
+                        <li>Saturday – Monday: 9am – 8pm</li>
+                        <li>Monday - Friday 5:30am - 11:008pm</li>
+                        <li>Saturday - Sunday 4:30am - 1:00pm</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-12 sm-padding">
                 <div class="footer_widget">
                     <h3>Subscribe to our contents</h3>
                     <div class="subscribe_form">
-                        <form action="#" class="subscribe_form" novalidate="true">
-                            <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address...">
+                        <form action="#" class="subscribe_form">
+                            <input type="email" name="email" id="subs-email" class="form_input" placeholder="Email Address...">
                             <button type="submit" class="submit">SUBSCRIBE</button>
                             <div class="clearfix"></div>
+                            <div id="subscribe-result">
+                                <p class="subscription-success"></p>
+                                <p class="subscription-error"></p>
+                            </div>
                         </form>
-                    </div>
+                    </div><!-- Subscribe Form -->
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- FOOTER  -->
-
+</section><!-- /.widget_section -->
 
 <footer class="footer_section">
     <div class="container">
         <div class="row">
             <div class="col-md-6 xs-padding">
-                <div class="copyright">
-                    ©
-                    <script type="text/javascript">
-                        document.write(new Date().getFullYear())
-                    </script>
-                    Barber Shop Powered by JAIRI Idriss
-                </div>
+                <div class="copyright">&copy; <script type="text/javascript"> document.write(new Date().getFullYear())</script> Barber Shop Powered by DynamicLayers</div>
             </div>
             <div class="col-md-6 xs-padding">
                 <ul class="footer_social">
@@ -84,23 +67,37 @@
             </div>
         </div>
     </div>
-</footer>
+</footer><!-- /.footer_section -->
 
+<a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
 
-<!-- INCLUDE JS SCRIPTS -->
-
-<script src="{{asset('assets')}}/Design/js/jquery.min.js"></script>
-<script src="{{asset('assets')}}/Design/js/bootstrap.min.js"></script>
-<script src="{{asset('assets')}}/Design/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery Lib -->
+<script src="{{asset('assets')}}/Design/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/bootstrap.min.js"></script>
+<!-- Imagesloaded JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/imagesloaded.pkgd.min.js"></script>
+<!-- OWL-Carousel JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/owl.carousel.min.js"></script>
+<!-- isotope JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/jquery.isotope.v3.0.2.js"></script>
+<!-- Smooth Scroll JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/smooth-scroll.min.js"></script>
+<!-- venobox JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/venobox.min.js"></script>
+<!-- ajaxchimp JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/jquery.ajaxchimp.min.js"></script>
+<!--Slicknav-->
+<script src="{{asset('assets')}}/Design/js/vendor/jquery.slicknav.min.js"></script>
+<!--Nice Select-->
+<script src="{{asset('assets')}}/Design/js/vendor/jquery.nice-select.min.js"></script>
+<!-- YTPlayer JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/jquery.mb.YTPlayer.min.js"></script>
+<!-- Wow JS -->
+<script src="{{asset('assets')}}/Design/js/vendor/wow.min.js"></script>
+<!-- Contact JS -->
+<script src="{{asset('assets')}}/Design/js/contact.js"></script>
+<!-- Appointment JS -->
+<script src="{{asset('assets')}}/Design/js/appointment.js"></script>
+<!-- Main JS -->
 <script src="{{asset('assets')}}/Design/js/main.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-
-</body>
-
-<!-- END BODY TAG -->
-
-
-<!-- Mirrored from localhost/BarbershopWebsite/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Apr 2022 11:31:48 GMT -->
-</html>
-
-<!-- END HTML TAG -->
