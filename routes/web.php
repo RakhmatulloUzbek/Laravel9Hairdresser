@@ -34,6 +34,11 @@ Route::get('/test',[HomeController::class,'test'])->name('test');
 
 // 5-1 Route with parametr
 Route::get('/param1/{id}',[HomeController::class,'param1'])->name('param1');
+
+Route::get('/service',[HomeController::class,'service'])->name('service');
+
+Route::get('/service_detail/{id}',[HomeController::class,'service_detail'])->name('service_detail');
+
 // 5-2 Route with parametrs
 Route::get('/param2/{id1}/{id2}',[HomeController::class,'param2'])->name('param2');
 
@@ -48,12 +53,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('',[AdminPanelController::class,'index'])->name('index');
+    Route::get('/index',[AdminPanelController::class,'index'])->name('index');
+
+    Route::get('/setting',[AdminPanelController::class,'setting'])->name('setting');
 
     //************** Admin Category Routes ***************//
     Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {
 
-        Route::get('/','index')->name('');
+        Route::get('/','index')->name('index');
         Route::get('/create','create')->name('create');
         Route::post('/store','store')->name('store');
         Route::get('/edit/{id}','edit')->name('edit');
