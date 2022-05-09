@@ -1,60 +1,53 @@
-<section id="about" class="about_section bd-bottom padding">
+<section class="about_section bd-bottom padding">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="about_content align-center">
-                    <h3 class="wow fadeInUp" data-wow-delay="100ms">Introducing</h3>
-                    <h2 class="wow fadeInUp" data-wow-delay="200ms">The Barber Shop <br>Science 1991</h2>
-                    <img class="wow fadeInUp" data-wow-delay="500ms" src="{{asset('assets')}}/Design/img/about-logo.png" alt="logo">
-                    <p class="wow fadeInUp" data-wow-delay="600ms">Barber is a person whose occupation is mainly to cut dress groom style and shave men's and boys' hair. A barber's place of work is known as a "barbershop" or a "barber's". Barbershops are also places of social interaction and public discourse. In some instances, barbershops are also public forums.</p>
-                    <a href="#" class="default_btn wow fadeInUp" data-wow-delay="600ms">More About Us</a>
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6 xs-padding wow fadeInLeft" data-wow-delay="300ms">
+                <div class="section_heading">
+                    <h3>Trendy Salon & Spa</h3>
+                    <h2>Step up your healthy hair care <br> routine with tips and advice!</h2>
+                    <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men's and boys' hair. A barber's place of work is known as a "barbershop" or a "barber's". Barbershops are also places of social interaction and public discourse. In some instances, barbershops are also public forums.</p>
+                    <a href="#" class="default_btn">More About Us</a>
                 </div>
             </div>
-            <div class="col-md-6 d-none d-md-block">
-                <div class="about_img">
-                    <img src="{{asset('assets')}}/Design/img/about-1.jpg" alt="idea-images" class="about_img_1 wow fadeInLeft" data-wow-delay="200ms">
-                    <img src="{{asset('assets')}}/Design/img/about-2.jpg" alt="idea-images" class="about_img_2 wow fadeInRight" data-wow-delay="400ms">
-                    <img src="{{asset('assets')}}/Design/img/about-3.jpg" alt="idea-images" class="about_img_3 wow fadeInLeft" data-wow-delay="600ms">
+            <div class="col-md-6 xs-padding wow fadeInRight" data-wow-delay="300ms">
+                <div class="about_video">
+                    <img src="{{asset('assets')}}/Design/img/post-1.jpg" alt="{{asset('assets')}}/Design/img">
+                    <div class="play-icon"><a href="#"><i class="ti-control-play"></i></a></div>
                 </div>
             </div>
         </div>
     </div>
-</section> <!--/.about_section -->
+</section><!--/. about_section -->
 
-<section class="service_section bg-grey padding">
+<section class="service_section bg-grey bd-bottom padding">
     <div class="container">
         <div class="section_heading text-center mb-40 wow fadeInUp" data-wow-delay="300ms">
-            <h3>Trendy Salon &amp; Spa</h3>
-            <h2>Our Services</h2>
+            <h3>Save 20% On Beauty Spa</h3>
+            <h2>Our Barber Services</h2>
             <div class="heading-line"></div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 sm-padding wow fadeInUp" data-wow-delay="200ms">
-                <div class="service_box">
-                    <i class="bs bs-scissors-1"></i>
-                    <h3>Haircut Styles</h3>
-                    <p>Barber is a person whose occupation is mainly to cut dress style.</p>
+        <div class="row justify-content-center">
+            @foreach($category as $rs)
+                <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp">
+                    <div class="service_content align-center">
+                        <img src="{{Storage::url($rs->image)}}" alt="Services">
+                        <h3>Beard Triming</h3>
+                        <P>Barber is a person whose occupation is mainly to cut dress style.</P>
+                    </div>
+                </div>
+            @endforeach
+            <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="400ms">
+                <div class="service_content align-center">
+                    <img src="{{asset('assets')}}/Design/img/service-3.jpg" alt="Services">
+                    <h3>Clean Smooth Shave</h3>
+                    <P>Barber is a person whose occupation is mainly to cut dress style.</P>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 sm-padding wow fadeInUp" data-wow-delay="300ms">
-                <div class="service_box">
-                    <i class="bs bs-razor-2"></i>
-                    <h3>Beard Triming</h3>
-                    <p>Barber is a person whose occupation is mainly to cut dress style.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 sm-padding wow fadeInUp" data-wow-delay="400ms">
-                <div class="service_box">
-                    <i class="bs bs-brush"></i>
-                    <h3>Smooth Shave</h3>
-                    <p>Barber is a person whose occupation is mainly to cut dress style.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 sm-padding wow fadeInUp" data-wow-delay="500ms">
-                <div class="service_box">
-                    <i class="bs bs-hairbrush-1"></i>
+            <div class="col-lg-3 col-sm-6 sm-padding wow fadeInUp" data-wow-delay="500ms">
+                <div class="service_content align-center">
+                    <img src="{{asset('assets')}}/Design/img/service-4.jpg" alt="Services">
                     <h3>Face Masking</h3>
-                    <p>Barber is a person whose occupation is mainly to cut dress style.</p>
+                    <P>Barber is a person whose occupation is mainly to cut dress style.</P>
                 </div>
             </div>
         </div>
@@ -115,7 +108,7 @@
             </div>
         </div>
     </div>
-</section><!-- /.book_section -->
+</section><!--/. book_section -->
 
 <section id="team" class="team_section bd-bottom padding">
     <div class="container">
@@ -191,68 +184,52 @@
             <h2>Our Barber Pricing</h2>
             <div class="heading-line"></div>
         </div>
+
+        @php
+            $mainCategories = \App\Http\Controllers\HomeController::maincategorylist();
+        @endphp
+
         <div class="row">
-            <div class="col-lg-4 col-md-6 sm-padding">
-                <div class="price_wrap">
-                    <h3>Hair Styling</h3>
-                    <ul class="price_list">
-                        @foreach($data as $rs)
-                        <li>
-                            <h4>{{$rs->title}}</h4>
-                            <p>{{$rs->description}}</p>
-                            <span class="price">${{$rs->price}}</span>
-                        </li>
-                        @endforeach
-                    </ul>
+            @foreach($mainCategories as $rs)
+                <div class="col-lg-4 col-md-6 sm-padding">
+                    <div class="price_wrap">
+                        <h3>{{$rs->title}}</h3>
+                        <ul class="price_list">
+                            @foreach($data as $service)
+                                <li>
+                                    @if($rs->id == $service->category_id)
+                                        <h4>{{$service->title}}</h4>
+                                        <p>Barber is a person whose occupation is mainly to cut dress groom style and
+                                            shave
+                                            men.</p>
+                                        <span class="price">$8</span>
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 sm-padding">
-                <div class="price_wrap">
-                    <h3>Shaving</h3>
-                    <ul class="price_list">
-                        <li>
-                            <h4>Clean Shaving</h4>
-                            <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men.</p>
-                            <span class="price">$8</span>
-                        </li>
-                        <li>
-                            <h4>Beard Triming</h4>
-                            <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men.</p>
-                            <span class="price">$9</span>
-                        </li>
-                        <li>
-                            <h4>Smooth Shave</h4>
-                            <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men.</p>
-                            <span class="price">$10</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 sm-padding">
-                <div class="price_wrap">
-                    <h3>Face Masking</h3>
-                    <ul class="price_list">
-                        <li>
-                            <h4>White Facial</h4>
-                            <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men.</p>
-                            <span class="price">$8</span>
-                        </li>
-                        <li>
-                            <h4>Face Cleaning</h4>
-                            <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men.</p>
-                            <span class="price">$9</span>
-                        </li>
-                        <li>
-                            <h4>Bright Tuning</h4>
-                            <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men.</p>
-                            <span class="price">$10</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section><!-- /. pricing_section -->
+
+<section class="product_cta padding">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6 xs-padding wow fadeInLeft" data-wow-delay="300ms">
+                <div class="pro_cta_content">
+                    <h2>Fashions fade, <br>style is eternal.</h2>
+                    <p>Barber is a person whose occupation is mainly to cut dress groom style and shave men's and boys' hair. A barber's place of work is known. Barbershops are also places of social interaction and public discourse.</p>
+                    <a href="#" class="default_btn">Purchase Now</a>
+                </div>
+            </div>
+            <div class="col-md-6 xs-padding wow fadeInRight" data-wow-delay="300ms">
+                <img src="{{asset('assets')}}/Design/img/product.png" alt="{{asset('assets')}}/Design/img">
+            </div>
+        </div>
+    </div>
+</section><!--/. product_cta -->
 
 <section class="cta_section padding">
     <div class="container">
