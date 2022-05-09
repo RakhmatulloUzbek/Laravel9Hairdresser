@@ -7,6 +7,12 @@
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h2 class="font-weight-bold my-2">Service List</h2>
         </div>
+        <div class="col-sm-6">
+            <ol class="breadrumb float-sm-right d-flex flex-row" style="list-style-type: none">
+                <li class="breadcrumb-item"><a href="{{route('admin.index')}}" class="text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active">Service</li>
+            </ol>
+        </div>
         <div class="card">
             <div class="d-grid gap-2 mt-3 mx-3 d-md-flex justify-content-md-end">
                 <a href="{{route('admin.service.create')}}" class="btn btn-primary mb-1"><i class="bi bi-plus-lg"></i> Add service</a>

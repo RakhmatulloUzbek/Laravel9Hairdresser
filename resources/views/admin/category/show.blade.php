@@ -5,8 +5,14 @@
 
 @section('content')
     <div class="content-wrapper">
-        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+        <div class="col-12 col-xl-8 mb-4 mb-xl-0 row">
             <h3 class="font-weight-bold">Detail Category of {{$data->title}}</h3>
+                <ol class="breadrumb float-sm-right d-flex flex-row " style="list-style-type: none">
+                    <li class="breadcrumb-item"><a href="{{route('admin.index')}}" class="text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}"class="text-decoration-none">Category</a></li>
+                    <li class="breadcrumb-item active">Show</li>
+                </ol>
+
         </div>
         <div class="row nb-2  ml-2 mt-4 responsive">
             <div class="col-sm-2 m-2">

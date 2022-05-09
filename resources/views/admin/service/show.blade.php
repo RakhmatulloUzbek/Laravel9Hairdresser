@@ -7,6 +7,13 @@
         <div class="col-12  mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Detail Service of {{$data->title}}</h3>
         </div>
+        <div class="col-sm-6">
+            <ol class="breadrumb float-sm-right d-flex flex-row" style="list-style-type: none">
+                <li class="breadcrumb-item"><a href="{{route('admin.index')}}" class="text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active"><a href="{{route('admin.service')}}" class="text-decoration-none">Service</a></li>
+                <li class="breadcrumb-item active">Show</li>
+            </ol>
+        </div>
         <div class="row nb-2  ml-2 mt-4">
             <div class="col-sm-2">
                 <a href="{{route('admin.service.edit',['id'=>$data->id])}}" style="width: 150px" class="btn btn-block btn-success" data-toggle="tooltip" title="Edit">Edit</a>

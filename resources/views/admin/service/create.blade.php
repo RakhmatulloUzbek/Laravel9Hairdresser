@@ -41,12 +41,12 @@
             <div class="row mb-3">
                 <label for="description" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-5">
-                    <input type="textarea" class="form-control" name="description" placeholder="Description">
+                    <input type="text" class="form-control" name="description" placeholder="Description">
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="detail" class="col-sm-2 col-form-label">Detail</label>
-                <div class="col-sm-5">
+                <div class="col-sm-8">
                     <textarea name="detail" id="detail" class="form-control">
 
                     </textarea>

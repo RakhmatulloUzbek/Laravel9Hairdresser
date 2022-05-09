@@ -8,6 +8,13 @@
         <div class="col-12 col-xl-8 mb-4 mb-xl-0 pb-4">
             <h3 class="font-weight-bold">Edit Category : {{$data->title}}</h3>
         </div>
+        <div class="col-sm-6">
+            <ol class="breadrumb float-sm-right d-flex flex-row" style="list-style-type: none">
+                <li class="breadcrumb-item"><a href="{{route('admin.index')}}" class="text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="/admin/category" class="text-decoration-none">Category</a></li>
+                <li class="breadcrumb-item active">Edit</li>
+            </ol>
+        </div>
         <form role="form" action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
             @csrf
            <div class="card-body">
