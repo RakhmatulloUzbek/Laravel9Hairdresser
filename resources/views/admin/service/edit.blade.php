@@ -15,7 +15,7 @@
         <div class="col-sm-6">
             <ol class="breadrumb float-sm-right d-flex flex-row" style="list-style-type: none">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}" class="text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item active"><a href="{{route('admin.service')}}" class="text-decoration-none">Service</a></li>
+                <li class="breadcrumb-item active"><a href="{{route('admin.service.index')}}" class="text-decoration-none">Service</a></li>
                 <li class="breadcrumb-item active">Edit</li>
             </ol>
         </div>
@@ -25,7 +25,6 @@
                 <label class="col-sm-2 col-form-label">Parent Service</label>
                 <div class="col-sm-5">
                     <select class="form-control" name="category_id">
-                        <option value="0" selected="selected">Main catagory</option>
                         @foreach($datalist as $rs)
                             <option value="{{$rs->id}}" @if($rs->id == $data->category_id) selected="selected" @endif>
                                 {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
