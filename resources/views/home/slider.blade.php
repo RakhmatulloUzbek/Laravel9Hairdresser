@@ -1,4 +1,4 @@
-<section class="slider_section">
+<section class="slider_section m-0">
     <ul id="main-slider" class="owl-carousel main_slider">
         @foreach($sliderdata as $rs)
             <li class="main_slide d-flex align-items-center" style="background-image: url('{{Storage::url($rs->image)}}'); height: 560px; width: 1600px">
