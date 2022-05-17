@@ -2,6 +2,7 @@
 
 @section('title','Service List')
 
+
 @section('content')
     <div class="content-wrapper">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
