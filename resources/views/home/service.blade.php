@@ -141,7 +141,7 @@
 @endsection
 
 @section('content')
-    <section class="page_header d-flex align-items-center">
+    <section class="page_header d-flex align-items-center m-0">
         <div class="container">
             <div class="section_heading text-center mb-40 wow fadeInUp" data-wow-delay="300ms">
                 <h3>Trendy Salon &amp; Spa</h3>
@@ -150,24 +150,85 @@
             </div>
         </div>
     </section><!--/. page_header -->
-    <section class="gallery_section bg-grey bd-bottom padding">
-        <div class="container">
-            <div class="s-box-container row justify-content">
-                @foreach($service as $rs)
-                    <div class="s-box">
-                        <!--top-bar-------->
-                        <div class="bar"></div>
-                        <!--img---------->
-                        <img alt="1" src="{{Storage::url($rs->image)}}"/>
-                        <!--servies-name---------->
-                        <h1>{{$rs->category->title}}</h1>
-                        <!--details------>
-                        <p>Track on your all daily expense and make your day to life easier.</p>
-                        <!--btn---------->
-                        <a class="s-btn" href="{{route('service_detail',['id'=>$rs->id])}}">More</a>
+    <section class="gallery_section bg-grey m-0 padding">
+        @php
+            $mainCategories = \App\Http\Controllers\HomeController::maincategorylist();
+        @endphp
+        <div class="card bg-grey">
+            <div class="container mt-3 bg-grey">
+                <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button type="button" class="btn btn-outline-secondary active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">All
+                        </button>
+                    </li>
+                    @foreach($mainCategories as $category)
+                        <li class="nav-item" role="presentation">
+                            <button type="button" class="btn btn-outline-secondary ml-4" id="pills-{{$category->id}}-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-{{$category->id}}" type="button" role="tab"
+                                    aria-controls="pills-{{$category->id}}"
+                                    aria-selected="false">{{$category->title}}
+                            </button>
+                        </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                         aria-labelledby="pills-home-tab">
+                        <div class="container">
+                            <div class="s-box-container row justify-content">
+                                @foreach($service as $rs)
+                                    <div class="s-box">
+                                        <!--top-bar-------->
+                                        <div class="bar"></div>
+                                        <!--img---------->
+                                        <img alt="1" src="{{Storage::url($rs->image)}}"/>
+                                        <!--servies-name---------->
+                                        <h1 class="m-3">{{$rs->category->title}}</h1>
+                                        <!--details------>
+                                        <h5 class="m-3">{{$rs->title}}</h5>
+                                        <p>Track on your all daily expense and make your day to life easier.</p>
+                                        <!--btn---------->
+                                        <a class="s-btn" href="{{route('service_detail',['id'=>$rs->id])}}">More</a>
+                                    </div>
+                                @endforeach
+                                <!--service-box-1---------------->
+                            </div>
+                        </div>
                     </div>
-                @endforeach
-                <!--service-box-1---------------->
+                    @foreach($mainCategories as $category)
+                        <div class="tab-pane fade" id="pills-{{$category->id}}" role="tabpanel"
+                             aria-labelledby="pills-{{$category->id}}-tab">
+                            <div class="container">
+                                <div class="s-box-container row justify-content">
+                                    @foreach($service as $rs)
+                                        @if($rs->category->id==$category->id)
+                                            <div class="s-box">
+                                                <!--top-bar-------->
+                                                <div class="bar"></div>
+                                                <!--img---------->
+                                                <img alt="1" src="{{Storage::url($rs->image)}}"/>
+                                                <!--servies-name---------->
+                                                <h1 class="m-3">{{$rs->category->title}}</h1>
+                                                <!--details------>
+                                                <h5 class="m-3">{{$rs->title}}</h5>
+                                                <p>Track on your all daily expense and make your day to life easier.</p>
+                                                <!--btn---------->
+                                                <a class="s-btn"
+                                                   href="{{route('service_detail',['id'=>$rs->id])}}">More</a>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                    <!--service-box-1---------------->
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci exercitationem, itaque
+                            pariatur repudiandae similique soluta.</p></div>
+                </div>
             </div>
         </div>
     </section>
