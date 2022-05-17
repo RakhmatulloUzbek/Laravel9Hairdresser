@@ -171,13 +171,13 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item" >
-            <a class="nav-link {{request()->routeIs('admin.index') ? 'active' : ''}}" href="{{route('admin.index')}}">
+            <a class="nav-link active" href="/admin/">
                 <i class="menu-icon mdi mdi-home"></i>
                 <span class="menu-title">Home</span>
             </a>
         </li>
-        <li class="nav-item {{request()->routeIs('admin.category.index') ? 'active' : ''}}">
-            <a class="nav-link" href="{{route('admin.category.index')}}">
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/category">
                 <i class="menu-icon mdi mdi-buffer"></i>
                 <span class="menu-title">Category</span>
             </a>
