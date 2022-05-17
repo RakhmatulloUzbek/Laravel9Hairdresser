@@ -11,13 +11,12 @@
         <div class="col-12 col-xl-8 mb-4 mb-xl-0 pb-4">
             <h3 class="font-weight-bold">Create Service</h3>
         </div>
-        <form role="form" action="{{route('admin.service.store')}}" method="post" enctype="multipart/form-data">
+        <form  role="form" action="{{route('admin.service.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Parent Service</label>
                 <div class="col-sm-5">
                     <select class="form-control select" name="category_id">
-                        <option value="0" selected="selected">Main catagory</option>
                         @foreach($data as $rs)
                             <option value="{{$rs->id}}">
                                 {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
@@ -66,6 +65,9 @@
                 <label for="image" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-5">
                     <input type="file" class="form-control" name="image">
+                    <div class="invalid-feedback">
+                        Please enter a message in the textarea.
+                    </div>
                 </div>
             </div>
             <div class="row mb-3">
