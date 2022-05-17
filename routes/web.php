@@ -26,24 +26,19 @@ Route::get('/hello', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
-// 3- Call controller function
+
+//************** Home Page Routes ***************//
+
 Route::get('/',[HomeController::class,'index'])->name('home');
-
-// 4- Route -> Controller -> View
-Route::get('/test',[HomeController::class,'test'])->name('test');
-
-// 5-1 Route with parametr
-Route::get('/param1/{id}',[HomeController::class,'param1'])->name('param1');
+Route::get('/about',[HomeController::class,'about'])->name('about');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::get('/references',[HomeController::class,'references'])->name('references');
+Route::post('/storemessage',[HomeController::class,'storemessage'])->name('storemessage');
 
 Route::get('/service',[HomeController::class,'service'])->name('service');
-
 Route::get('/service_detail/{id}',[HomeController::class,'service_detail'])->name('service_detail');
 
-// 5-2 Route with parametrs
-Route::get('/param2/{id1}/{id2}',[HomeController::class,'param2'])->name('param2');
 
-// 4- Route -> Controller -> View
-Route::post('/save',[HomeController::class,'save'])->name('save');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -51,11 +46,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //************** Admin Panel Routes ***************//
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('/admin')->name('admin.')->group(function () {
 
-    Route::get('/index',[AdminPanelController::class,'index'])->name('index');
+    Route::get('/',[AdminPanelController::class,'index'])->name('index');
 
     Route::get('/setting',[AdminPanelController::class,'setting'])->name('setting');
+
+    Route::post('/setting/update',[AdminPanelController::class,'settingUpdate'])->name('setting.update');
 
     //************** Admin Category Routes ***************//
     Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {
