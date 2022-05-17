@@ -11,13 +11,18 @@
             <div class="d-flex menu-wrap align-items-center">
                 <div id="mainmenu" class="mainmenu">
                     <ul class="nav">
-                        <li><a data-scroll class="nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>                        </li>
+                        <li><a data-scroll class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>                        </li>
+                        <li><a href="{{route('about')}}">About</a></li>
                         <li><a href="about-us.html">About</a>
                             <ul>
                                 <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="about-company.html">About Company</a></li>
+                                <li><a href="about-company.html">About Company</a>
+                                    <ul class="child">
+                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li><a href="about-company.html">About Company</a></li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
                         <li><a href="/service">Services</a></li>
                         <li><a href="#">Pages</a>
                             <ul>
@@ -35,7 +40,8 @@
                                 <li><a href="blog-single.html">Blog Single</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/references/">References</a></li>
+                        <li><a href="/contact/">Contact</a></li>
                     </ul>
                 </div>
                 <div class="header-btn">
