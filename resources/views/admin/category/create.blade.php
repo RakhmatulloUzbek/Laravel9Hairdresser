@@ -52,7 +52,7 @@
                 <div class="col-sm-5">
                     <select class="form-select" name="status" aria-label="Default select example">
                     <option></option>
-                    <option value="True" selected>True</option>
+                    <option value="True">True</option>
                     <option value="False">False</option>
                     </select>
                 </div>
