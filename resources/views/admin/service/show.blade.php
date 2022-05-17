@@ -10,7 +10,7 @@
         <div class="col-sm-6">
             <ol class="breadrumb float-sm-right d-flex flex-row" style="list-style-type: none">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}" class="text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item active"><a href="{{route('admin.service')}}" class="text-decoration-none">Service</a></li>
+                <li class="breadcrumb-item active"><a href="{{route('admin.service.index')}}" class="text-decoration-none">Service</a></li>
                 <li class="breadcrumb-item active">Show</li>
             </ol>
         </div>
