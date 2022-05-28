@@ -56,4 +56,7 @@ class HomeController extends Controller
         $data->save();
         return redirect()->route('admin.setting');
     }
+    public function login(){
+        return view('admin.login');
+    }
 }
