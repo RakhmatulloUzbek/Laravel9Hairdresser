@@ -1,20 +1,5 @@
 <div class="theme-setting-wrapper">
-    <div id="settings-trigger"><i class="ti-settings"></i></div>
-    <div id="theme-settings" class="settings-panel">
-        <i class="settings-close ti-close"></i>
-        <p class="settings-heading">SIDEBAR SKINS</p>
-        <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
-        <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
-        <p class="settings-heading mt-2">HEADER SKINS</p>
-        <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-        </div>
-    </div>
+    <div id="settings-trigger"><a href="{{route('admin.setting')}}"><i class="ti-settings"></i></a></div>
 </div>
 <div id="right-sidebar" class="settings-panel">
     <i class="settings-close ti-close"></i>
@@ -189,25 +174,31 @@
             </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="">
-                <i class="menu-icon mdi mdi-help"></i>
-                <span class="menu-title">FAQ</span>
+            <a class="nav-link" href="{{route('admin.message.index')}}">
+                <i class="menu-icon bi bi-envelope-fill"></i>
+                <span class="menu-title">Messages</span>
             </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="">
-                <i class="menu-icon mdi mdi-help"></i>
-                <span class="menu-title">Documentation</span>
+            <a class="nav-link" href="{{route('admin.faq.index')}}">
+                <i class="menu-icon bi bi-question-square-fill"></i>
+                <span class="menu-title">Faq</span>
             </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="">
-                <i class="menu-icon mdi mdi-message-text-outline"></i>
-                <span class="menu-title">Comments</span>
+            <a class="nav-link" href="{{route('admin.comment.index')}}">
+                <i class="menu-icon bi bi-chat-left-text-fill"></i>
+                <span class="menu-title">Comment</span>
             </a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{route('admin.appointment.index')}}">
+                <i class="menu-icon bi bi-calendar-check-fill"></i>
+                <span class="menu-title">Appointment</span>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{route('admin.user.index')}}">
                 <i class="menu-icon mdi mdi-account-multiple"></i>
                 <span class="menu-title">Users</span>
             </a>
