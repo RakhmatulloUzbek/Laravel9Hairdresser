@@ -1,141 +1,17 @@
 @extends('layouts.fontbase')
 
-@section('title','Barber Shop || Service Detail')
+@section('title','Barber Shop || Services')
 
 @section('head')
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{asset('assets')}}/Design/css/services_css.css">
     <style>
-        .services {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
+        i#star{
+            font-size: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,.5);
         }
-
-        .s-heading h1 {
-            color: #576975;
-            font-size: 3rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            margin: 0px;
-        }
-
-        .s-heading p {
-            color: rgba(87, 105, 117, 0.60);
-            font-size: 1rem;
-            margin: 5px;
-            text-align: center;
-        }
-
-        .s-box-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .s-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            width: 300px;
-            padding: 20px 25px;
-            height: 400px;
-            box-sizing: border-box;
-            margin: 30px;
-            position: relative;
-        }
-
-        .s-box img {
-            height: 120px;
-            border-radius: 25px;
-        }
-
-        .s-box h1 {
-            color: #576975;
-            letter-spacing: 1px;
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-
-        }
-
-        .s-box p {
-            color: rgba(87, 105, 117, 0.90);
-            text-align: center;
-        }
-
-        .s-btn {
-            width: 140px;
-            height: 40px;
-            border-radius: 20px;
-            border: 1px solid #9e8a78;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #576975;
-            margin-top: 10px;
-        }
-
-        .bar {
-            width: 100px;
-            height: 6px;
-            position: absolute;
-            left: 50%;
-            top: 0%;
-            transform: translateX(-50%);
-            background-color: #9e8a78;
-            border-radius: 0px 0px 10px 10px;
-            display: none;
-            animation: bar 0.5s;
-        }
-
-        .s-box:hover {
-            box-shadow: 2px 2px 30px #9e8a78;
-            transition: all ease 0.3s;
-        }
-
-        .s-btn:hover {
-            background-color: #9e8a78;
-            border: 1px solid #9e8a78;
-            color: #FFFFFF;
-            transition: all ease 0.3s;
-        }
-
-        .s-box:hover .bar {
-            display: block;
-        }
-
-        @keyframes bar {
-            0% {
-                width: 0px;
-            }
-            100% {
-                width: 100px;
-            }
-        }
-
-        @media (max-width: 1050px) {
-            .s-box-container {
-                flex-wrap: wrap;
-
-            }
-
-            .services {
-                height: auto;
-            }
-
-            .s-heading {
-                margin: 15px;
-            }
-
-            .s-box {
-                flex-grow: 1;
-            }
-
+        i.active{
+            color: #fadb3e;
         }
     </style>
 @endsection
@@ -158,19 +34,33 @@
             <div class="container mt-3 bg-grey">
                 <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button type="button" class="btn btn-outline-secondary active" id="pills-home-tab" data-bs-toggle="pill"
+                        <button type="button" class="default_btn active" id="pills-home-tab"
+                                data-bs-toggle="pill"
                                 data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                                 aria-selected="true">All
                         </button>
                     </li>
                     @foreach($mainCategories as $category)
-                        <li class="nav-item" role="presentation">
-                            <button type="button" class="btn btn-outline-secondary ml-4" id="pills-{{$category->id}}-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-{{$category->id}}" type="button" role="tab"
-                                    aria-controls="pills-{{$category->id}}"
-                                    aria-selected="false">{{$category->title}}
-                            </button>
-                        </li>
+                        @if(count($category->children))
+                            <li class="nav-item" role="presentation">
+                                <button type="button" class="default_btn ml-4"
+                                        id="pills-{{$category->id}}-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-{{$category->id}}" type="button" role="tab"
+                                        aria-controls="pills-{{$category->id}}"
+                                        aria-selected="false">{{$category->title}}
+                                </button>
+                            </li>
+                            @include('home.categorytree2',['children'=>$category->children])
+                        @else
+                            <li class="nav-item" role="presentation">
+                                <button type="button" class="default_btn ml-4"
+                                        id="pills-{{$category->id}}-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-{{$category->id}}" type="button" role="tab"
+                                        aria-controls="pills-{{$category->id}}"
+                                        aria-selected="false">{{$category->title}}
+                                </button>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
@@ -179,16 +69,23 @@
                         <div class="container">
                             <div class="s-box-container row justify-content">
                                 @foreach($service as $rs)
+                                    @php
+                                        $average = $rs->comment->average('rate');
+                                    @endphp
                                     <div class="s-box">
                                         <!--top-bar-------->
                                         <div class="bar"></div>
                                         <!--img---------->
                                         <img alt="1" src="{{Storage::url($rs->image)}}"/>
-                                        <!--servies-name---------->
-                                        <h1 class="m-3">{{$rs->category->title}}</h1>
-                                        <!--details------>
-                                        <h5 class="m-3">{{$rs->title}}</h5>
-                                        <p>Track on your all daily expense and make your day to life easier.</p>
+                                        <h3 class="m-2"><strong>{{$rs->title}}</strong></h3>
+                                        <div class="row " style="display: block">
+                                            <i id="star" class="bi bi-star-fill {{$average >= 1 ? 'active' : ''}}"></i>
+                                            <i id="star" class="bi bi-star-fill {{$average >= 2 ? 'active' : ''}}"></i>
+                                            <i id="star" class="bi bi-star-fill {{$average >= 3 ? 'active' : ''}}"></i>
+                                            <i id="star" class="bi bi-star-fill {{$average >= 4 ? 'active' : ''}}"></i>
+                                            <i id="star" class="bi bi-star-fill {{$average >= 5 ? 'active' : ''}}"></i>
+                                        </div>
+                                        <a href="">Comments ({{$rs->comment->count('id')}})</a>
                                         <!--btn---------->
                                         <a class="s-btn" href="{{route('service_detail',['id'=>$rs->id])}}">More</a>
                                     </div>
@@ -198,32 +95,75 @@
                         </div>
                     </div>
                     @foreach($mainCategories as $category)
-                        <div class="tab-pane fade" id="pills-{{$category->id}}" role="tabpanel"
-                             aria-labelledby="pills-{{$category->id}}-tab">
-                            <div class="container">
-                                <div class="s-box-container row justify-content">
-                                    @foreach($service as $rs)
-                                        @if($rs->category->id==$category->id)
-                                            <div class="s-box">
-                                                <!--top-bar-------->
-                                                <div class="bar"></div>
-                                                <!--img---------->
-                                                <img alt="1" src="{{Storage::url($rs->image)}}"/>
-                                                <!--servies-name---------->
-                                                <h1 class="m-3">{{$rs->category->title}}</h1>
-                                                <!--details------>
-                                                <h5 class="m-3">{{$rs->title}}</h5>
-                                                <p>Track on your all daily expense and make your day to life easier.</p>
-                                                <!--btn---------->
-                                                <a class="s-btn"
-                                                   href="{{route('service_detail',['id'=>$rs->id])}}">More</a>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                    <!--service-box-1---------------->
+                        @if(count($category->children))
+                            <div class="tab-pane fade" id="pills-{{$category->id}}" role="tabpanel"
+                                 aria-labelledby="pills-{{$category->id}}-tab">
+                                <div class="container">
+                                    <div class="s-box-container row justify-content">
+                                        @foreach($service as $rs)
+                                            @php
+                                                $average = $rs->comment->average('rate');
+                                            @endphp
+                                            @if($rs->category->id==$category->id)
+                                                <div class="s-box">
+                                                    <!--top-bar-------->
+                                                    <div class="bar"></div>
+                                                    <!--img---------->
+                                                    <img alt="1" src="{{Storage::url($rs->image)}}"/>
+                                                    <h3 class="m-2"><strong>{{$rs->title}}</strong></h3>
+                                                    <div class="row " style="display: block">
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 1 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 2 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 3 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 4 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 5 ? 'active' : ''}}"></i>
+                                                    </div>
+                                                    <a href="">Comments ({{$rs->comment->count('id')}})</a>
+                                                    <!--btn---------->
+                                                    <a class="s-btn"
+                                                       href="{{route('service_detail',['id'=>$rs->id])}}">More</a>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        <!--service-box-1---------------->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            @include('home.categorytree3',['children'=>$category->children,'service'=>$service])
+                        @else
+                            <div class="tab-pane fade" id="pills-{{$category->id}}" role="tabpanel"
+                                 aria-labelledby="pills-{{$category->id}}-tab">
+                                <div class="container">
+                                    <div class="s-box-container row justify-content">
+                                        @foreach($service as $rs)
+                                            @php
+                                                $average = $rs->comment->average('rate');
+                                            @endphp
+                                            @if($rs->category->id==$category->id)
+                                                <div class="s-box">
+                                                    <!--top-bar-------->
+                                                    <div class="bar"></div>
+                                                    <!--img---------->
+                                                    <img alt="1" src="{{Storage::url($rs->image)}}"/>
+                                                    <h3 class="m-2"><strong>{{$rs->title}}</strong></h3>
+                                                    <div class="row " style="display: block">
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 1 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 2 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 3 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 4 ? 'active' : ''}}"></i>
+                                                        <i id="star" class="bi bi-star-fill {{$average >= 5 ? 'active' : ''}}"></i>
+                                                    </div>
+                                                    <a href="">Comments ({{$rs->comment->count('id')}})</a>
+                                                    <a class="s-btn"
+                                                       href="{{route('service_detail',['id'=>$rs->id])}}">More</a>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        <!--service-box-1---------------->
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci exercitationem, itaque

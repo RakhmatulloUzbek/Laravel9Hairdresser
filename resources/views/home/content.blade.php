@@ -246,14 +246,15 @@
 </section><!-- /.cta_section -->
 
 <section class="blog-section bd-bottom padding">
-    <div class="container">
+
+    <div class="swiper mySwiper container">
         <div class="section-heading text-center mb-40 wow fadeInUp" data-wow-delay="300ms">
             <h3>From Blog</h3>
             <h2>A Good Newspaper Is A <br> Nation Talking To Itself</h2>
         </div><!--/.section-heading-->
-        <div class="row blog-wrap">
+        <div class="swiper-wrapper row">
             <div class="col-lg-4 col-md-6 sm-padding wow fadeInUp" data-wow-delay="200ms">
-                <div class="blog-item">
+                <div class="swiper-slide blog-item">
                     <div class="blog-thumb">
                         <img src="{{asset('assets')}}/Design/img/post-1.jpg" alt="post">
                         <span class="category"><a href="#">interior</a></span>
@@ -266,7 +267,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 sm-padding wow fadeInUp" data-wow-delay="300ms">
-                <div class="blog-item">
+                <div class="swiper-slide blog-item">
                     <div class="blog-thumb">
                         <img src="{{asset('assets')}}/Design/img/post-2.jpg" alt="post">
                         <span class="category"><a href="#">Architecture</a></span>
@@ -279,7 +280,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 sm-padding wow fadeInUp" data-wow-delay="400ms">
-                <div class="blog-item">
+                <div class="swiper-slide blog-item">
                     <div class="blog-thumb">
                         <img src="{{asset('assets')}}/Design/img/post-3.jpg" alt="post">
                         <span class="category"><a href="#">Design</a></span>
@@ -292,6 +293,9 @@
                 </div>
             </div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div
     </div>
 </section><!--/.blog-section-->
 

@@ -4,9 +4,8 @@
             <li class="main_slide d-flex align-items-center" style="background-image: url('{{Storage::url($rs->image)}}'); height: 560px; width: 1600px">
                 <div class="container">
                     <div class="slider_content">
-                        <h3>Its Not Just a Haircut, Its an Experience.</h3>
-                        <h1>Being a barber is about <br>taking care of the people.</h1>
-                        <p>Our barbershop is the territory created purely for males who appreciate<br> premium quality, time and flawless look.</p>
+                        <h1>{{$rs->title}}</h1>
+                        <p>{{$rs->description}}</p>
                         <a href="#" class="default_btn">Make Appointment</a>
                     </div>
                 </div>
